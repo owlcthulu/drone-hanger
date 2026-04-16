@@ -1,13 +1,13 @@
 package droneHanger;
 
-public abstract class drone
+public class drone
 {
     private String manufactor;
     private char type;
     private int year;
     private double cargoCapacity;
 
-    public drone(String manufactor, char type, int year,double cargoCapacity)
+    public drone(char type, String manufactor, int year,double cargoCapacity)
     {
         this.manufactor = manufactor;
         this.type = type;
@@ -33,13 +33,13 @@ public abstract class drone
 class priorityDrone extends drone {
 
     public priorityDrone(String manufactor, char type, int year, double cargoCapacity) {
-        super(manufactor, type, year, cargoCapacity);
+        super(type, manufactor, year, cargoCapacity);
     }
 }
 class normalDrone extends drone
 {
     public normalDrone(String manufactor, char type, int year, double cargoCapacity)
     {
-        super(manufactor, type, year, cargoCapacity);
+        super(type, manufactor, year, cargoCapacity);
     }
 }
