@@ -154,19 +154,20 @@ public class hanger
     public void searchDroneID(String search)
     {
         HashMap<String,drone> droneSearch = new HashMap<String, drone>();
+        boolean found = false;
         for (drone d : inventory)
         {
             droneSearch.put(d.getID(), d);
         }
-        for (drone d : droneSearch.values())
-        {
-            if(d.getID().equals(search))
-            {
-                System.out.println(droneSearch.get(d.getID()));
-            }else{
-                System.out.println("ERROR: Drone with ID " + search + " not found.");
+        for (drone d : droneSearch.values()) {
+            if (d.getID().equals(search)) {
+                System.out.println(d.getID() + "|" + d.getType() + "|" + d.getManufactor() + "," + d.getYear() + "," + d.getCargoCapacity());
+                found = true;
             }
         }
-
+        if(!found)
+        {
+            System.out.println("ID not found with "+search+".");
+        }
     }
 }
