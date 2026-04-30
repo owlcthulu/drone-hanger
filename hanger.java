@@ -3,9 +3,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.HashMap;
+import java.util.Map;
 
 public class hanger
 {
+    Scanner scanner = new Scanner(System.in);
     private ArrayList<drone> inventory;
     //constructor initializes the array list
     public hanger()
@@ -43,8 +46,9 @@ public class hanger
                     System.out.println("ERROR: Invalid number at line " + lineNumber + " : " + line + ". Please enter valid year and/or pay load capacity. ");
                     continue;
                 }
+                String id = drone.addID();
                 //creates new drone object from the parsed fields to check for duplicates
-                drone newDrone = new drone(type, fields[1].trim(), year, payload);
+                drone newDrone = new drone(id,type, fields[1].trim(), year, payload);
 
                 //this will check parsed drones and compare to known drones for duplicates
                 boolean isDuplicate = false;
@@ -143,8 +147,24 @@ public class hanger
         }
         else {
             for (drone drone : inventory) {
-                System.out.println(drone);
+                System.out.println(drone.getID() + "|" + drone.getType() +","+drone.getManufactor()+","+drone.getYear() + "," + drone.getCargoCapacity());
             }
         }
+    }
+    public void searchDroneID(String search)
+    {
+        HashMap<String,drone> droneSearch = new HashMap<String, drone>();
+        for (drone d : inventory)
+        {
+            droneSearch.put(d.getID(), d);
+        }
+        for (drone d : droneSearch.values())
+        {
+            if(d.getID().equals(search))
+            {
+                System.out.println(droneSearch.get(d.getID()));
+            }
+        }
+
     }
 }

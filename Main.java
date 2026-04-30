@@ -15,7 +15,8 @@ public class Main {
 		System.out.println("4. View inventory sorted by pay load capacity.");
 		System.out.println("5. View inventory sorted by manufacture year.");
 		System.out.println("6. Drone Search");
-		System.out.println("7. Exit");
+		System.out.println("7. ID Search");
+		System.out.println("0. Exit");
 		System.out.println("Please make a selection. You can enter 1-7 to progress... "); 
 		try {
 			menuChoice = Integer.parseInt(scanner.nextLine());
@@ -49,11 +50,16 @@ public class Main {
 			System.out.println("Enter drone type, Standard or Priority...");
 			String type = scanner.nextLine(); 
 			Hangar.searchDroneInventory(manufacturer, type);
-		}
-		else if(menuChoice == 7) {
+		} else if (menuChoice == 7)
+		{
+			System.out.println("place type the ID your are looking for(example: D1010)");
+			String search = scanner.nextLine();
+			Hangar.searchDroneID(search);
+
+		} else if(menuChoice == 0) {
 			System.out.println("Exiting program, safe skies!");
 		}
 		}
-	while (menuChoice != 7); 
+	while (menuChoice != 8);
 }
 }

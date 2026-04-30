@@ -4,9 +4,11 @@ public class drone
     private char type;
     private int year;
     private double cargoCapacity;
+    private String id;
 
-    public drone(char type, String manufactor, int year,double cargoCapacity)
+    public drone(String id, char type, String manufactor, int year,double cargoCapacity)
     {
+        this.id = id;
         this.manufactor = manufactor;
         this.type = type;
         this.year = year;
@@ -27,17 +29,26 @@ public class drone
     public double getCargoCapacity() {
         return cargoCapacity;
     }
+    public String getID() { return id; }
+
+    private static int count = 1000;
+    public static String addID()
+    {
+        count++;
+        return "D" + count;
+    }
+
 }
 class priorityDrone extends drone {
 
-    public priorityDrone(String manufactor, char type, int year, double cargoCapacity) {
-        super(type, manufactor, year, cargoCapacity);
+    public priorityDrone(String id,String manufactor, char type, int year, double cargoCapacity) {
+        super(id,type, manufactor, year, cargoCapacity);
     }
 }
 class normalDrone extends drone
 {
-    public normalDrone(String manufactor, char type, int year, double cargoCapacity)
+    public normalDrone(String id,String manufactor, char type, int year, double cargoCapacity)
     {
-        super(type, manufactor, year, cargoCapacity);
+        super(id,type, manufactor, year, cargoCapacity);
     }
 }
