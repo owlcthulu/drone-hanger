@@ -27,7 +27,7 @@ public class hanger
                     continue; //skips invalid line and will restart loop moving onto next line to check validity
                 }
 
-                char type = fields[0].toUpperCase().charAt(0);
+                char type = fields[0].replace("\uFEFF"," ").trim().toUpperCase().charAt(0);//in case of \uFEFF from showing up: I added the .replace to remove the u\uFEFF and replace it with a blank space so the trim can remove it and replace with something P or S
 
                 if (type != 'S'&& type != 'P') { // check 2: check if the type is S
                     System.out.println("ERROR: Invalid drone type at " + lineNumber + ": " + line + ". Please enter Standard(S) or Priority(P)");
