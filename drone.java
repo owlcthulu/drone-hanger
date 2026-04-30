@@ -1,4 +1,3 @@
-
 public class drone
 {
     private String manufactor;

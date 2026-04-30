@@ -1,4 +1,4 @@
-package droneHanger;
+
 import java.util.Scanner; 
 
 public class Main {
@@ -35,7 +35,7 @@ public class Main {
 		else if(menuChoice == 3) {
 			System.out.println("Enter a manufacture name...");
 			String manufacture = scanner.nextLine();
-			Hangar.countByManufacturer();
+			Hangar.countByManufacturer(manufacture);
 		}
 		else if(menuChoice == 4) {
 			Hangar.displayInventory();

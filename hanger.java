@@ -1,4 +1,4 @@
-package droneHanger;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -26,8 +26,10 @@ public class hanger
                     System.out.println("ERROR: Incorrect drone information. Expected 4 fields at " + lineNumber + ": " + line);
                     continue; //skips invalid line and will restart loop moving onto next line to check validity
                 }
+
                 char type = fields[0].toUpperCase().charAt(0);
-                if (type != 'S' && type!= 'P') { // check 2, check valid type S or P
+
+                if (type != 'S'&& type != 'P') { // check 2: check if the type is S
                     System.out.println("ERROR: Invalid drone type at " + lineNumber + ": " + line + ". Please enter Standard(S) or Priority(P)");
                     continue;
                 }
