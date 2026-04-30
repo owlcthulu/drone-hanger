@@ -80,16 +80,16 @@ public class hanger
         for(drone d : inventory)
         {
             if(d.getManufactor().equalsIgnoreCase(manufacturer) &&
-                    ((type.equalsIgnoreCase("Standard") && d.getType() == 's') ||
-                            type.equalsIgnoreCase("Piority") && d.getType() == 'P'))
+                    ((type.equalsIgnoreCase("Standard") && d.getType() == 'S') ||
+                            type.equalsIgnoreCase("Priority") && d.getType() == 'P'))
             {
                 System.out.println(d);
                 found = true;
             }
-            if(!found)
-            {
-                System.out.println("no drone available at the time");
-            }
+        }
+        if(!found)
+        {
+            System.out.println("no drone available at the time");
         }
     }
     public void sortByPayLoad()
@@ -163,6 +163,8 @@ public class hanger
             if(d.getID().equals(search))
             {
                 System.out.println(droneSearch.get(d.getID()));
+            }else{
+                System.out.println("ERROR: Drone with ID " + search + " not found.");
             }
         }
 
