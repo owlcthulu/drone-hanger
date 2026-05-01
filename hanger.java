@@ -48,7 +48,9 @@ public class hanger
                 }
                 String id = drone.addID();
                 //creates new drone object from the parsed fields to check for duplicates
-                drone newDrone = new drone(id,type, fields[1].trim(), year, payload);
+                drone newDrone = (type == 'P')
+                        ? new priorityDrone(id,fields[1].trim(),type,year,payload)
+                        : new normalDrone(id,fields[1].trim(),type,year,payload);
 
                 //this will check parsed drones and compare to known drones for duplicates
                 boolean isDuplicate = false;

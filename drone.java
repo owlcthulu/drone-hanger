@@ -1,4 +1,4 @@
-public class drone
+abstract class drone
 {
     private String manufactor;
     private char type;
