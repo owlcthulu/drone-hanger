@@ -1,15 +1,13 @@
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class hanger
 {
     Scanner scanner = new Scanner(System.in);
     private ArrayList<drone> inventory;
+    ArrayList<drone> droneQueue = new ArrayList<>();
     //constructor initializes the array list
     public hanger()
     {
@@ -171,5 +169,44 @@ public class hanger
         {
             System.out.println("ID not found with "+search+".");
         }
+    }
+    public void addMaintenanceDrone()
+    {
+        boolean found = false;
+        for (drone d : inventory)
+        {
+            while(!found)
+            {
+                System.out.print("Please enter the ID of the drone to fix: ");
+                String drone = new Scanner(System.in).next();
+                if(d.getID().equals(drone))
+                {
+                    droneQueue.add(d);
+                    found = true;
+                }
+                else
+                {
+                    System.out.println("ID not found with "+drone+".");
+                }
+            }
+        }
+
+
+    }
+
+    public void removeMaintenanceDrone()
+    {
+        boolean found = false;
+        while(!found)
+        {
+            System.out.print("Please enter the ID if the drone was fixed: ");
+            String drone = new Scanner(System.in).next();
+            if(droneQueue.contains(drone))
+            {
+                droneQueue.remove(drone);
+                found = true;
+            }
+        }
+
     }
 }
