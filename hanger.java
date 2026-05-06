@@ -147,7 +147,7 @@ public class hanger
         }
         else {
             for (drone drone : inventory) {
-                System.out.println(drone.getID() + "|" + drone.getType() +","+drone.getManufactor()+","+drone.getYear() + "," + drone.getCargoCapacity());
+                System.out.println(drone.displayDrone());
             }
         }
     }
@@ -161,7 +161,7 @@ public class hanger
         }
         for (drone d : droneSearch.values()) {
             if (d.getID().equals(search)) {
-                System.out.println(d.getID() + "|" + d.getType() + "|" + d.getManufactor() + "," + d.getYear() + "," + d.getCargoCapacity());
+                System.out.println(d.displayDrone());
                 found = true;
             }
         }
@@ -172,54 +172,64 @@ public class hanger
     }
     public void addMaintenanceDrone()
     {
-        boolean found = false;
-        String choice = scanner.nextLine();
-       while(choice.equalsIgnoreCase("y")||choice.equalsIgnoreCase("yes"))
-       {
-           for(drone d : inventory)
-           {
-               while(!found)
-               {
-                   System.out.print("Please enter the ID of the drone to fix: ");
-                   String drone = new Scanner(System.in).next();
-                   if(d.getID().equals(drone))
-                   {
-                       droneQueue.add(d);
-                       found = true;
-                   }
-                   else
-                   {
-                       System.out.println("ID not found with "+drone+".");
-                   }
-                   System.out.println("are you done adding drone?");
-                   choice = new Scanner(System.in).next();
-               }
-
-           }
-       }
-
-
+        while(true)
+        {
+            System.out.println("Please enter a drone ID to fix:");
+            String droneID = scanner.nextLine();
+            Boolean found = false;
+            for (drone d : inventory)
+            {
+                if (d.getID().equals(droneID))
+                {
+                    droneQueue.add(d);
+                    found = true;
+                }
+            }
+            if(!found)
+            {
+                System.out.println("ID not found with "+droneID+".");
+            }
+            System.out.println("are you done with adding the drone that need to fix(y/n).");
+            String choice = scanner.nextLine();
+            if(choice.equalsIgnoreCase("y")||choice.equalsIgnoreCase("yes"))
+            {
+                break;
+            }
+        }
     }
 
     public void removeMaintenanceDrone()
     {
-        String response = scanner.nextLine();
-        boolean found = false;
-        while(response.equalsIgnoreCase("y")||response.equalsIgnoreCase("yes"))
+        while(true)
         {
-            while(!found)
+            boolean found = false;
+            System.out.println("Please enter a drone ID to remove that you have fixed:");
+            String droneID = scanner.nextLine();
+            for(drone d : inventory)
             {
-                System.out.print("Please enter the ID if the drone was fixed: ");
-                String drone = new Scanner(System.in).next();
-                if(droneQueue.contains(drone))
+                if (d.getID().equals(droneID))
                 {
-                    droneQueue.remove(drone);
+                    droneQueue.remove(d);
                     found = true;
                 }
             }
+            if(!found)
+            {
+                System.out.println("ID not found with "+droneID+".");
+            }
+            System.out.print("are done removing drone that is fixed(y/n)?");
+            String choice = scanner.nextLine();
+            if(choice.equalsIgnoreCase("y")||choice.equalsIgnoreCase("yes"))
+            {
+                break;
+            }
         }
-        System.out.println("Are you done removing drone?");
-        response = new Scanner(System.in).next();
-
+    }
+    public void displayMaintenanceDrone()
+    {
+        for(drone d : droneQueue)
+        {
+            System.out.println(d.displayDrone());
+        }
     }
 }

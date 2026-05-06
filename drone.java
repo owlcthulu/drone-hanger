@@ -37,6 +37,10 @@ abstract class drone
         count++;
         return "D" + count;
     }
+    public String displayDrone()
+    {
+        return id+"|"+type+"|"+manufactor+"|"+year+"|"+cargoCapacity;
+    }
 
 }
 class priorityDrone extends drone {

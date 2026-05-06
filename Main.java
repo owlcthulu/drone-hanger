@@ -59,20 +59,28 @@ public class Main {
 
 		} else if (menuChoice == 8)
 		{
-			System.out.println("welcome mechanic, type 1 to add a drone to fix, or type 2 to remove fixed drone");
-			String choice = scanner.nextLine();
-			do
+			System.out.println("welcome mechanic");
+			while(true)
 			{
+				System.out.println("type 1 to add a drone to fix,\ntype 2 to remove fixed drone\n,or 3 to display drone need maintained");
+				String choice = scanner.nextLine();
 				if (choice.equals("1")||choice.equalsIgnoreCase("one"))
 				{
 					Hangar.addMaintenanceDrone();
 				}else  if (choice.equals("2")||choice.equalsIgnoreCase("two"))
 				{
 					Hangar.removeMaintenanceDrone();
+				}else  if (choice.equals("3")||choice.equalsIgnoreCase("three"))
+				{
+					Hangar.displayMaintenanceDrone();
 				}
-				System.out.println("are you done?");
-				choice = scanner.nextLine();
-			}while (choice.equalsIgnoreCase("yes"));
+				System.out.println("are you done(y/n)?");
+				String response = scanner.nextLine();
+				if(response.equalsIgnoreCase("y")||response.equalsIgnoreCase("yes"))
+				{
+					break;
+				}
+			}
 		}
 		if(menuChoice == 0) {
 			System.out.println("Exiting program, safe skies!");
