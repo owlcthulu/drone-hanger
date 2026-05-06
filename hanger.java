@@ -173,40 +173,53 @@ public class hanger
     public void addMaintenanceDrone()
     {
         boolean found = false;
-        for (drone d : inventory)
-        {
-            while(!found)
-            {
-                System.out.print("Please enter the ID of the drone to fix: ");
-                String drone = new Scanner(System.in).next();
-                if(d.getID().equals(drone))
-                {
-                    droneQueue.add(d);
-                    found = true;
-                }
-                else
-                {
-                    System.out.println("ID not found with "+drone+".");
-                }
-            }
-        }
+        String choice = scanner.nextLine();
+       while(choice.equalsIgnoreCase("y")||choice.equalsIgnoreCase("yes"))
+       {
+           for(drone d : inventory)
+           {
+               while(!found)
+               {
+                   System.out.print("Please enter the ID of the drone to fix: ");
+                   String drone = new Scanner(System.in).next();
+                   if(d.getID().equals(drone))
+                   {
+                       droneQueue.add(d);
+                       found = true;
+                   }
+                   else
+                   {
+                       System.out.println("ID not found with "+drone+".");
+                   }
+                   System.out.println("are you done adding drone?");
+                   choice = new Scanner(System.in).next();
+               }
+
+           }
+       }
 
 
     }
 
     public void removeMaintenanceDrone()
     {
+        String response = scanner.nextLine();
         boolean found = false;
-        while(!found)
+        while(response.equalsIgnoreCase("y")||response.equalsIgnoreCase("yes"))
         {
-            System.out.print("Please enter the ID if the drone was fixed: ");
-            String drone = new Scanner(System.in).next();
-            if(droneQueue.contains(drone))
+            while(!found)
             {
-                droneQueue.remove(drone);
-                found = true;
+                System.out.print("Please enter the ID if the drone was fixed: ");
+                String drone = new Scanner(System.in).next();
+                if(droneQueue.contains(drone))
+                {
+                    droneQueue.remove(drone);
+                    found = true;
+                }
             }
         }
+        System.out.println("Are you done removing drone?");
+        response = new Scanner(System.in).next();
 
     }
 }

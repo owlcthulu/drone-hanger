@@ -16,8 +16,9 @@ public class Main {
 		System.out.println("5. View inventory sorted by manufacture year.");
 		System.out.println("6. Drone Search");
 		System.out.println("7. ID Search");
+		System.out.println("8. maintenance area");
 		System.out.println("0. Exit");
-		System.out.println("Please make a selection. You can enter 1-7 to progress... "); 
+		System.out.println("Please make a selection. You can enter 1-8 to proceed:");
 		try {
 			menuChoice = Integer.parseInt(scanner.nextLine());
 		}
@@ -56,10 +57,27 @@ public class Main {
 			String search = scanner.nextLine();
 			Hangar.searchDroneID(search);
 
-		} else if(menuChoice == 0) {
+		} else if (menuChoice == 8)
+		{
+			System.out.println("welcome mechanic, type 1 to add a drone to fix, or type 2 to remove fixed drone");
+			String choice = scanner.nextLine();
+			do
+			{
+				if (choice.equals("1")||choice.equalsIgnoreCase("one"))
+				{
+					Hangar.addMaintenanceDrone();
+				}else  if (choice.equals("2")||choice.equalsIgnoreCase("two"))
+				{
+					Hangar.removeMaintenanceDrone();
+				}
+				System.out.println("are you done?");
+				choice = scanner.nextLine();
+			}while (choice.equalsIgnoreCase("yes"));
+		}
+		if(menuChoice == 0) {
 			System.out.println("Exiting program, safe skies!");
 		}
 		}
-	while (menuChoice != 8);
+	while (menuChoice != 0);
 }
 }
