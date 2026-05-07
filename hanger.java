@@ -7,7 +7,7 @@ public class hanger
 {
     Scanner scanner = new Scanner(System.in);
     private ArrayList<drone> inventory;
-    ArrayList<drone> droneQueue = new ArrayList<>();
+    Queue<drone> droneQueue = new LinkedList<>();
     //constructor initializes the array list
     public hanger()
     {

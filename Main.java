@@ -11,7 +11,7 @@ public class Main {
 		System.out.println("===== Drone Hangar Menu ====="); 
 		System.out.println("1. Load drones From CSV file");
 		System.out.println("2. Display hangar inventory.");
-		System.out.println("3. Display drone count by manufactuer.");
+		System.out.println("3. Display drone count by manufacture.");
 		System.out.println("4. View inventory sorted by pay load capacity.");
 		System.out.println("5. View inventory sorted by manufacture year.");
 		System.out.println("6. Drone Search");
@@ -40,7 +40,7 @@ public class Main {
 			Hangar.countByManufacturer(manufacture);
 		}
 		else if(menuChoice == 4) {
-			Hangar.displayInventory();
+			Hangar.sortByPayLoad();
 		}
 		else if(menuChoice == 5) {
 			Hangar.sortByYear();
