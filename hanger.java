@@ -19,6 +19,10 @@ public class hanger
         try {                                          //try catch will hand errors gracefully, in this case incorrect files/ files not found won't crash the system
             Scanner fileScanner = new Scanner(new File(fileName));
             int lineNumber = 0;
+            if(!fileScanner.hasNextLine())
+            {
+                System.out.println("file is there, but the file has nothing");
+            }
             while (fileScanner.hasNextLine()) {
                 String line = fileScanner.nextLine();
                 lineNumber++;
